@@ -30,3 +30,6 @@ spec:
 kubectl -n aula7 wait --for=condition=Ready pod/leitor-secret --timeout=90s
 kubectl -n aula7 exec leitor-secret -- ls /segredos
 kubectl -n aula7 exec leitor-secret -- cat /segredos/senha
+
+kubectl -n aula7 create serviceaccount leitor
+kubectl -n aula7 get serviceaccount leitor
