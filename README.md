@@ -25,3 +25,8 @@ spec:
   - name: credencial
     secret:
       secretName: credencial-demo
+
+    kubectl apply -f pod-secret.yaml
+kubectl -n aula7 wait --for=condition=Ready pod/leitor-secret --timeout=90s
+kubectl -n aula7 exec leitor-secret -- ls /segredos
+kubectl -n aula7 exec leitor-secret -- cat /segredos/senha
