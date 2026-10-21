@@ -35,3 +35,5 @@ kubectl -n aula7 create serviceaccount leitor
 kubectl -n aula7 get serviceaccount leitor
 
 kubectl -n aula7 create role consulta-pods --verb=get,list --resource=pods
+
+kubectl -n aula7 create rolebinding leitor-pods --role=consulta-pods --serviceaccount=aula7:leitor
