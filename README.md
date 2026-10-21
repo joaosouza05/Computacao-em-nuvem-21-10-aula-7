@@ -33,3 +33,5 @@ kubectl -n aula7 exec leitor-secret -- cat /segredos/senha
 
 kubectl -n aula7 create serviceaccount leitor
 kubectl -n aula7 get serviceaccount leitor
+
+kubectl -n aula7 create role consulta-pods --verb=get,list --resource=pods
