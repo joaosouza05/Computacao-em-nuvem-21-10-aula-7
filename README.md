@@ -6,3 +6,22 @@ kubectl get namespace aula7
 
 kubectl -n aula7 create secret generic credencial-demo --from-literal=senha=exemplo-123
 kubectl -n aula7 get secret credencial-demo
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: leitor-secret
+  namespace: aula7
+spec:
+  containers:
+  - name: app
+    image: busybox:1.36
+    command: ['sh', '-c', 'sleep 3600']
+    volumeMounts:
+    - name: credencial
+      mountPath: /segredos
+      readOnly: true
+  volumes:
+  - name: credencial
+    secret:
+      secretName: credencial-demo
