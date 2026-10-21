@@ -1,0 +1,17 @@
+## Perguntas de análise
+
+**1. Qual é a diferença entre usar Secret e ConfigMap?**
+
+O Secret é utilizado para armazenar informações sensíveis, como senhas. Já o ConfigMap é usado para guardar configurações que não são confidenciais.
+
+**2. Qual objeto define as permissões e qual concede essas permissões à conta?**
+
+A Role define as permissões disponíveis, como `get` e `list`. O RoleBinding associa essa Role à ServiceAccount, permitindo que ela utilize essas permissões.
+
+**3. Por que o comando `delete pods` retornou `no`?**
+
+Porque a Role não possui a permissão `delete`. Ela permite consultar e listar Pods, mas não excluí-los.
+
+**4. Uma conta com essa Role poderia ler Secrets? Justifique.**
+
+Não. A Role foi configurada para permitir ações sobre Pods, e não sobre Secrets. Para ler Secrets, seria necessário conceder permissões específicas para esse recurso.
