@@ -41,3 +41,7 @@ kubectl -n aula7 create rolebinding leitor-pods --role=consulta-pods --serviceac
 kubectl -n aula7 auth can-i get pods --as=system:serviceaccount:aula7:leitor
 kubectl -n aula7 auth can-i list pods --as=system:serviceaccount:aula7:leitor
 kubectl -n aula7 auth can-i delete pods --as=system:serviceaccount:aula7:leitor
+
+kubectl -n aula7 create role consulta-pods --verb=get,list,watch --resource=pods --dry-run=client -o yaml | kubectl apply -f -
+
+kubectl auth can-i watch pods -n aula7 --as=system:serviceaccount:aula7:leitor
